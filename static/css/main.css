@@ -1,0 +1,320 @@
+a {
+	text-decoration:none;
+	color:black;
+	transition:0.7s;
+}
+
+a:hover {
+	text-decoration:none;
+	color:rgba(122, 170, 148, 0.911);
+}
+
+.white {
+	color:white;
+}
+
+.black {
+	color:black;
+}
+
+.grey {
+	color:rgb(66, 65, 65);
+}
+
+.tag {
+	background-color:rgba(122, 170, 148, 0.911);
+	padding:1px 10px;
+}
+
+
+
+/* Base.html */
+
+body {
+	background-color:white;
+}
+
+li {
+	list-style:none;
+	margin:0px;
+    list-style-position:none;
+}
+
+ul{
+	padding:0px;
+	margin:0px;
+}
+
+.header {
+	background-image:url();
+	background-size:cover;
+	width:100%;
+	height:300px;
+	position:relative;
+	background-position:center;
+}
+
+.header::before {
+	z-index:1;
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	
+}
+
+.under-header {
+    position:absolute;
+    width:100%;
+	color:black;
+	text-align:center;
+	padding-top:110px;
+	z-index:2;
+}
+
+.nav-border-line {
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+	margin-bottom:50px;
+}
+
+.nav-item  {
+	padding:0px 5px;
+	font-weight:700;
+	font-size:15px;
+}
+
+/* blog-form.html */
+
+
+
+/* Home.html */
+/* home-slide */
+
+.home-slideshow {
+	height:439px;
+	width:100%;
+}
+
+.home-side-slideshow {
+	width:100%;
+}
+
+.home-side-slideshow li{
+	position:relative;
+}
+
+.under-home-slide-slideshow {
+	position:absolute;
+	width:100%;
+	text-align:center;
+	bottom:0px; 
+	padding: 0px 25px;
+	background-color:rgba(0,0,0,0.6);
+	line-height:60px;
+	vertical-align:middle;
+	font-size:20px;
+}
+
+/* Home.html */
+/* first-topic */
+
+.topic-box {
+	width:100%;
+	padding-top:30px;
+	margin-bottom:20px;
+	border-bottom:1.5px solid black;
+}
+
+.first-content {
+	overflow:hidden;
+}
+
+.first-sub-content {
+	float:left;
+	width:50%;
+}
+
+.first-table {
+	width:100%;
+	margin:0px 0px 10px 10px;
+}
+
+.first-table td {
+	border-bottom:1px solid rgb(235, 233, 233);
+	padding-bottom:10px;
+}
+
+
+/* Home.html */
+/* second-topic */
+
+.second-content {
+	width:100%;
+	overflow:hidden;
+}
+
+.second-each-list {
+	float:left;
+	width:33.33%;
+	padding:20px 10px 10px 10px; 
+}
+
+.second-each-list-sub {
+    border:0px solid #C0C0C0;
+    position:relative;
+    height:380px;
+    background-color:white;
+
+}
+
+.second-each-list-sub li{
+	padding:10px 0px 0px 0px;
+	font-size:13px;
+}
+
+.second-content-title,.fourth-content-title {
+	font-size:16px;
+	font-weight:bold;
+}
+
+/* Home.html */
+/* Third-topic */
+
+.second-table {
+	margin:0px 0px 20px 0px;
+
+}
+
+.second-table td {
+	border-bottom:1px solid rgb(235, 233, 233);
+	padding-bottom:20px;
+
+}
+
+/* Home.html */
+/* fourth-topic */
+
+.fourth-top-content {
+	width:100%;
+	position:relative;
+}
+
+.under-fourth-top-content {
+	position:absolute;
+	width:100%;
+	text-align:center;
+	bottom:0px; 
+	padding: 20px 25px;
+	line-height:40px;
+	background-color:rgba(0,0,0,0.5);
+	vertical-align:middle;
+}
+
+.fourth-each-list {
+	float:left;
+	width:50%;
+	padding:20px 10px 10px 10px; 
+	height:500px;
+	margin-bottom:30px;
+}
+
+.fourth-each-list-sub li {
+	padding:10px 0px 0px 10px;
+	font-size:13px;
+}
+
+/* Home.html */
+/* side-topic */
+
+.side-slide-table {
+	margin:0px 0px 10px 0px;
+
+}
+
+.side-slide-table td {
+	border-bottom:1px solid rgb(235, 233, 233);
+	padding-bottom:10px;
+
+}
+
+.first-sub-slide {
+	width:100%;
+
+}
+
+.second-sub-slide li{
+	padding-top:10px;
+	font-size:20px;
+}
+ 
+.side-slide {
+	height:450px;
+	object-fit:cover;
+}
+
+/* Detail.html */
+
+.post-detail {
+	background-color:white;
+	width:100%;
+}
+
+.post-detail-random {
+	width:100%;
+	border-top:solid 1px rgb(235, 233, 233);; 
+	
+}
+
+.detail-each-list {
+	width:33.33%;
+	float:left;
+	padding:40px 20px 20px 20px; 
+}
+
+.detail-each-list-sub {
+	height:450px;
+	border:0px solid #C0C0C0;
+
+}
+
+.detail-each-list-sub li{
+	padding:10px 0px 0px 10px;
+	font-size:13px;
+}
+
+.detail-content-title {
+	font-size:16px;
+	font-weight:bold;
+}
+
+/* Blog-Category.html */
+
+  .card-columns {
+	  column-count: 4;
+	  padding-top:20px;
+	}
+
+.card-block {
+	padding:15px;
+	position:relative;
+	}
+
+.map-edit {
+	position:absolute; 
+	right:10px; 
+	bottom:5px;
+	z-index:2;
+	color:grey;
+	}
+
+.map-edit a {
+	color:grey;
+}
+
+
+
+	
