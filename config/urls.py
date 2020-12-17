@@ -24,6 +24,7 @@ urlpatterns = [
     #own
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('blogs.urls')),
+    path('', include('citymaps.urls')),
     path('', include('account.urls')),
 ] 
 
