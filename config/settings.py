@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     #own
     'blogs',
+    'citymaps',
     'crispy_forms',
     'account',
     'bootstrap4',
