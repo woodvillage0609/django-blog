@@ -8,6 +8,7 @@ from django.views.generic import (
     )
 from .models import Blog, Category, Tag
 from citymaps.models import City
+from account.models import Account
 from .forms import BlogForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 #ログインしていないと、create/update/deleteできない様にする
@@ -28,6 +29,7 @@ class BlogListView(ListView):
             'blog_gourmet': Blog.objects.filter(category__name='Gourmet').order_by('-date'),
             'blog_coding': Blog.objects.filter(category__name='Coding').order_by('-date'),
             'blog_citymap': City.objects.all().order_by('-date'),
+            'blog_profile':Account.objects.filter(pk=1),
         })
         return context
 

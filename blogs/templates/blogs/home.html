@@ -341,6 +341,26 @@
         </div>
 
         <div class="topic-box">
+            <h4>Profile</h4>
+        </div>
+
+        <div class="second-sub-slide">
+            {% for profile in blog_profile %}
+            <ul>
+                <li style="text-align:center;"> 
+                    <img src="{{MEDIA_URL}}{{profile.photo}}" style="width:80%;border-radius:50%;">
+                </li>
+                <li style="color:grey;font-size:14px;">
+                    名前：{{profile.name}}
+                </li>
+                <li style="color:grey;font-size:13px;">
+                    {{profile.content|safe}}
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+
+        <div class="topic-box">
             <h4>Category</h4>
         </div>
 

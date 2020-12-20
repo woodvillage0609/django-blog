@@ -21,7 +21,7 @@
 <script>hljs.initHighlightingOnLoad();</script>
 
 
-<title>Django Blog</title>
+<title>Blog Synctown</title>
 
 </head>
 
@@ -64,7 +64,10 @@
                                 <a class="nav-link" href="{% url 'blog-create' %}">New Blog</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'citymap-create' %}">New CityMap</a>
+                                <a class="nav-link" href="{% url 'citymap-create' %}">New Map</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'profile-update' pk=1 %}">Profile Update</a>
                             </li>
                             {% endif %}
                             {% if user.is_authenticated %}
