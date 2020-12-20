@@ -87,7 +87,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media', #画像用投稿向けに追加
-                'blogs.context.related',
+                'blogs.context.related', #blogのrelation関係
             ],
             #bootstrap4使用のため
             'builtins':[ 

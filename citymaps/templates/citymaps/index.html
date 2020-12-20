@@ -1,6 +1,102 @@
-{% for citymap in citymaps %}
+{% extends 'blogs/base.html' %}
 
-{{citymap.title}}
-{{citymap.content}}
+{% block content %}
 
-{% endfor %}
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+    <script>
+      var map;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          
+          center: {lat: 48.137393, lng: 11.575449},
+          zoom: 5,
+          center: {lat: 35.672553, lng: 139.7472087},
+          zoom: 14,
+
+        });
+
+        {% for citymap in citymaps %}
+
+        (function(){
+
+          var contentString = 
+          '<a href="{% url "citymap-detail" citymap.id %}"><img src="{{MEDIA_URL}}{{citymap.photo}}" style="width:200px;"></a>'+
+          '<br>'+
+          '<strong><a href="{% url "citymap-detail" citymap.id %}">{{citymap.title}}</a></strong>'; 
+
+          var infowindow = new google.maps.InfoWindow({
+              content: contentString
+          });
+          
+          var markerIcon = {
+              url: 'https://cdn1.iconfinder.com/data/icons/flat-design-basic-set-5/24/flag-red-rally-512.png',
+              scaledSize: new google.maps.Size(40, 40),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(10,45)
+          }
+          
+
+          var marker = new google.maps.Marker({
+              position:{lat: {{ citymap.latitude }}, lng: {{ citymap.longitude }}},
+              map: map,
+              icon: markerIcon,
+              title: contentString,
+              animation: google.maps.Animation.DROP
+          });
+
+          lastWindow=null; 
+
+          marker.addListener('click', function() {
+                if (lastWindow) lastWindow.close();
+                infowindow.open(map, marker);
+                lastWindow=infowindow;
+            });
+
+          })();
+
+        {% endfor %}
+      }
+
+    </script>
+
+
+<div class="card-columns">
+  
+    {% for citymap in citymaps %}
+  
+    <div class="card">
+        <a href="{% url 'citymap-detail' citymap.id %}"><img class="card-img-top img-fluid" src="{{MEDIA_URL}}{{ citymap.photo }}" style="width:100%;" alt="Card image cap"></a>
+      
+      <div class="card-block">
+        <a href="{% url 'citymap-detail' citymap.id %}" class="card-title"><h5>{{citymap.title}}</h5></a>
+        <p class="card-text"><a style="color:grey;font-size:13px;">{{citymap.content|safe|truncatechars:100}}</a></p>
+        <p class="card-text"><small class="text-muted">{{citymap.date}}</small></p>
+  
+        {% if user.is_superuser %}
+        <div class="map-edit">
+          <li>
+                <small>
+                  <a href="{% url 'citymap-update' citymap.id %}">Edit</a> |
+                  <a href="{% url 'citymap-delete' citymap.id %}">Delete</a>
+                </small>
+          </li>
+        </div>
+        {% endif %}
+  
+      </div>
+    </div>
+    
+    {% endfor %}
+  
+  </div>
+
+
+
+
+
+
+
+
+{% endblock %}
