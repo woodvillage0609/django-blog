@@ -315,6 +315,59 @@ ul{
 	color:grey;
 }
 
+/* Citymap-Detail.html */
 
+.map-show {
+	width:100%;
+}
 
-	
+table.overview {
+	width:100%;
+}
+
+table.overview td {
+	font-size:15px;
+	border-bottom:1px solid #EEEEEE;
+	padding:10px;
+}
+
+.sidemap-show {
+	border:1px solid #808080;
+	position:relative;
+	margin-bottom:50px;
+}
+
+.sidemap-show::before {
+	z-index:1;
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color:rgba(0,0,0,0.3);
+}
+
+.sidemap-show:hover::before {
+	z-index:1;
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color:rgba(0,0,0,0.1);
+}
+
+.under-sidemap-show {
+	position:absolute;
+    width:100%;
+	color:white;
+	text-align:center;
+	top:50%;
+	left:0px;
+	z-index:2;
+	font-size:20px;
+}

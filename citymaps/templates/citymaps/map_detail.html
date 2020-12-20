@@ -1,2 +1,152 @@
-{{object.title}}
-{{object.content}}
+{% extends 'blogs/base.html' %}
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-8">
+
+        <div class="map-show">
+
+            <img src="{{MEDIA_URL}}{{object.photo}}" style="width:100%;max-height:600px;object-fit:cover;">
+            
+            <ul>
+            
+                <li style="font-size:25px;padding-top:10px;">
+                    <strong>{{object.title}}</strong>
+                </li>
+                
+                <table class="overview">
+                    <tr style="border-top:1px solid #EEEEEE;">
+                        <td style="width:20%;">
+                        <li><strong>事業主</strong></li>
+                        </td>
+                        <td>{{ object.owner }}</td>
+                    </tr>
+                    <tr>
+                        <td><li><strong>用途</strong></li></td>
+                        <td>{{ object.use }}</td>
+                    </tr>
+                    <tr>
+                        <td><li><strong>竣工年</strong></li></td>
+                        <td>{{ object.completion }}</td>
+                    </tr>
+                    <tr>
+                        <td><li><strong>延べ床面積</strong></li></td>
+                        <td>{{ object.area }}</td>
+                    </tr>
+                    <tr>
+                        <td><li><strong>階数</strong></li></td>
+                        <td>{{ object.floor }}</td>
+                    </tr>
+                    <tr>
+                        <td><li><strong>詳細情報</strong></li></td>
+                        <td><a href="{{object.url}}" target="_blank">詳細はこちらから</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <li><strong>完成イメージ</strong></li>
+                        </td>
+                        <td style="text-align:right;">
+                            <img src="{{object.image}}" style="width:100%;"> <br>
+                            <a><small>出典：{{object.source}}</small></a>
+                        </td>
+                    </tr>
+
+                </table>
+                <br>
+                    
+                <div id="map" class="map" style="width:100%; height:400px;"></div>
+                
+                <script>
+                
+                    function initMap() {
+                
+                        var myLatLng = {lat: {{ object.latitude }}, lng: {{ object.longitude }} };
+                
+                        map = new google.maps.Map(document.getElementById('map'), {
+                        center: myLatLng,
+                        zoom: 14
+                        });
+                
+                        var contentString = '<img src="{{MEDIA_URL}}{{object.photo}}" style="width:200px;">';
+                
+                        var infowindow = new google.maps.InfoWindow({
+                        content: contentString    
+                        });
+                
+                        var markerIcon = {
+                
+                            url: 'https://cdn4.iconfinder.com/data/icons/peppyicons/512/660011-location-512.png',
+                            scaledSize: new google.maps.Size(40, 40),
+                            origin: new google.maps.Point(0, 0), 
+                            anchor: new google.maps.Point(20,45)
+                
+                            }
+                
+                        var marker = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        icon: markerIcon
+                        }); 
+                
+                        marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                        });
+                
+                    }
+                
+                </script>
+                
+                <br>
+                
+                <table style="position:relative; width:100%;">
+                    <tr>
+                        <td style="padding:0px 0px 30px 10px;">
+                            {{object.content|safe}}    
+                        </td>
+                    </tr>
+                </table>
+                
+                <br>
+                
+                <li style="position:absolute;right:10px;bottom:5px;">
+                {% if user.is_superuser %}
+                    <a href="{% url 'citymap-update' object.id %}">Edit</a> | <a href="{% url 'citymap-delete' object.id %}">Delete</a>
+                {% endif %}
+                </li>
+                
+                <li style="position:absolute;left:10px;bottom:5px;"><a href="{% url 'citymap-index' %}">Back</a></li>
+            
+            </ul>
+            
+        </div>
+
+    </div>
+    
+
+<!-- サイドスライド -->
+    <div class="col-md-4">
+        
+    {% for citymap in citymap_list %}
+    
+    <div class="sidemap-show">	
+        <a href="{% url 'citymap-detail' citymap.id %}">
+            <img src="{{MEDIA_URL}}{{citymap.photo}}" style="width:100%;object-fit:cover;">
+        </a>
+    
+        <div class="under-sidemap-show">
+            <li>
+                <a href="{% url 'citymap-detail' citymap.id %}" class="white">{{citymap.title}}</a>
+            </li>
+        </div>
+
+    </div>
+    
+    {% endfor %}
+    
+    </div>
+    
+</div>
+
+
+{% endblock %}

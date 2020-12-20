@@ -44,3 +44,7 @@ class City(models.Model):
     #Admin画面で、titleを表記させるためのもの
     def __str__(self): 
         return self.title
+
+    #新規POST後に、どのURLに飛ばすか指定するためのもの
+    def get_absolute_url(self):
+        return reverse('citymap-detail', kwargs={'pk':self.pk})
