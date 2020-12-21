@@ -46,7 +46,7 @@ ul{
 }
 
 .header {
-	background-image:url();
+	background-image:url('/static/img/green.png');
 	background-size:cover;
 	width:100%;
 	height:300px;
@@ -63,7 +63,7 @@ ul{
 	left: 0;
 	right: 0;
 	bottom: 0;
-	
+	background-color:rgb(243, 237, 237,0.2);
 }
 
 .under-header {
@@ -370,4 +370,20 @@ table.overview td {
 	left:0px;
 	z-index:2;
 	font-size:20px;
+}
+
+
+/* タブレット向けレイアウト */
+/* ブレイクポイントをmax-width: 1000pxに指定 */
+@media(max-width:1000px){
+
+	
+}
+
+/* スマートフォン向けレイアウト */
+/* ブレイクポイントをmax-width: 670pxに指定 */
+@media(max-width:670px){
+
+
+
 }

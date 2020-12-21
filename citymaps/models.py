@@ -19,19 +19,19 @@ class Tag(models.Model):
         return self.name
 
 class City(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(verbose_name='建物名', max_length=100)
     content = RichTextUploadingField()
-    owner = models.CharField(max_length=100)
+    owner = models.CharField(verbose_name='事業主', max_length=100)
     completion = models.ForeignKey(
                     Completion, verbose_name= '竣工年',
                     on_delete=models.PROTECT
             )
-    use = models.CharField(max_length=200)
-    area = models.CharField(max_length=200)
-    floor = models.CharField(max_length=200)
-    image = models.CharField(max_length=500)
-    url = models.CharField(max_length=500)
-    source = models.CharField(max_length=500)
+    use = models.CharField(verbose_name='用途', max_length=200)
+    area = models.CharField(verbose_name='延床面積', max_length=200)
+    floor = models.CharField(verbose_name='階数', max_length=200)
+    image = models.CharField(verbose_name='完成イメージ', max_length=500)
+    url = models.CharField(verbose_name='リンク先', max_length=500)
+    source = models.CharField(verbose_name='出典元', max_length=500)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)
     photo = models.ImageField(upload_to='pictures/', blank=True, null=True)
