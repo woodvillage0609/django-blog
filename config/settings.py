@@ -18,9 +18,6 @@ import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#Heroku向けに追加
-django_heroku.settings(locals())
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -171,3 +168,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 #ログイン時にDjangoでは自動的にprofileに飛ぶので、homeとしてあげる。
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
+
+#Heroku向けに追加。一番下に持ってこないとワークしない。
+django_heroku.settings(locals())
