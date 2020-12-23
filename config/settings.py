@@ -28,18 +28,9 @@ SECRET_KEY = 'yx2szqin)a0jo72t=y&e_sf9vyfh%*asz^#gnx5rh0(2$gebzk'
 #DEBUG = True
 
 #Herokuデプロイのため、色々変更を加えています。 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEBUG = False
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-
-if not DEBUG:
-    import django_heroku
-    django_heroku.settings(locals())
 
 
 ALLOWED_HOSTS = []
@@ -88,6 +79,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #Herokuのため追加
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -177,6 +170,8 @@ STATIC_URL = '/static/'
 #別途作成したstaticフォルダ（css, java, img)に集約させるための表記
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 #画像表示のpillow関連。投稿した写真が保存される場所を指定
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -188,5 +183,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
-#Heroku向けに追加。一番下に持ってこないとワークしない。
-#django_heroku.settings(locals())
+#Heroku向けに追加。一番下に持ってこないとワークしない。。らしいが。
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
