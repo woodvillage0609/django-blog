@@ -7,6 +7,11 @@ name = "pypi"
 django = "*"
 django-heroku = "*"
 gunicorn = "*"
+mysqlclient = "*"
+django-crispy-forms = "*"
+django-bootstrap4 = "*"
+django-ckeditor = "*"
+pillow = "*"
 
 [dev-packages]
 
