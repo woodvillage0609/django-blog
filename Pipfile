@@ -7,12 +7,10 @@ name = "pypi"
 django = "*"
 django-heroku = "*"
 gunicorn = "*"
-mysqlclient = "*"
 django-crispy-forms = "*"
 django-bootstrap4 = "*"
 django-ckeditor = "*"
 pillow = "*"
-pymysql = "*"
 dj-database-url = "*"
 
 [dev-packages]
