@@ -109,6 +109,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+#HerokuでMysqlを使うのに必要な設定っぽい。
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES = {
+    'default': dj_database_url.config()
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
