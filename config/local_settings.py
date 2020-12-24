@@ -12,6 +12,7 @@ DATABASES = {
         'PASSWORD': 'Iymy1800@',
         'HOST': '',
         "PORT": '',
+        'SOCKET': '/tmp/mysql.sock',
     }
 }
 
