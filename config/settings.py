@@ -109,29 +109,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-#HerokuでMysqlを使うのに必要な設定っぽい。
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES = {
-    'default': dj_database_url.config()
-}
-
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 #local_settings.pyの方に移行。
-#DATABASES = {
-    #'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        #'ENGINE': 'django.db.backends.mysql',
-        #'NAME': 'blog_django',
-        #'USER': 'root',
-        #'PASSWORD': 'Iymy1800@',
-    #}
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog_django',
+        'USER': 'root',
+        'PASSWORD': 'Iymy1800@',
+    }
+}
 
+#HerokuでMysqlを使うのに必要な設定っぽい
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
