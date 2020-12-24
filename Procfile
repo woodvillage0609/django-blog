@@ -1,1 +1,1 @@
-web: gunicorn django-synctown.wsgi --log-file -
+web: gunicorn blog-django.wsgi --log-file -
