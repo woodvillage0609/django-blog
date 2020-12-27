@@ -12,7 +12,6 @@ DATABASES = {
         # 'PASSWORD': 'Iymy1800@',
         # 'HOST': '',
         # "PORT": '',
-        # 'SOCKET': '/var/run/mysqld/mysqld.sock',
     }
 }
 

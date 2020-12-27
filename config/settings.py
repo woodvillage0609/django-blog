@@ -12,9 +12,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-#Heroku向けに追加
-#import django_heroku
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -49,7 +46,8 @@ INSTALLED_APPS = [
     'account',
     'bootstrap4',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'storages',
 ]
 
 #CKeditorに投稿する写真とかのパス
@@ -158,14 +156,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-#加えてあげた。Herokuデプロイのため。
+#Herokuでのデプロイに必要なため追加。
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
 
 #別途作成したstaticフォルダ（css, java, img)に集約させるための表記
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
+#Herokuでのデプロイに必要なため追加。
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #画像表示のpillow関連。投稿した写真が保存される場所を指定
@@ -186,5 +184,19 @@ except ImportError:
     pass
 
 if not DEBUG:
+
+    #アマゾンS3を使ってデータ保存。
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    MEDIA_URL = S3_URL
+
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = None
+
+    #Herokuデプロイに必要なため追加。
     import django_heroku
     django_heroku.settings(locals())

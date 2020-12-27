@@ -12,6 +12,8 @@ django-bootstrap4 = "*"
 django-ckeditor = "*"
 pillow = "*"
 dj-database-url = "*"
+django-storages = "*"
+boto3 = "*"
 
 [dev-packages]
 
