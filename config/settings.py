@@ -12,14 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-#Heroku向けに追加
-import django_heroku
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-#Heroku向けに追加
-django_heroku.settings(locals())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -28,9 +22,11 @@ django_heroku.settings(locals())
 SECRET_KEY = 'yx2szqin)a0jo72t=y&e_sf9vyfh%*asz^#gnx5rh0(2$gebzk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['django-synctown.herokuapp.com']
 
 
 # Application definition
@@ -50,7 +46,8 @@ INSTALLED_APPS = [
     'account',
     'bootstrap4',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'storages',
 ]
 
 #CKeditorに投稿する写真とかのパス
@@ -76,6 +73,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #Herokuのため追加
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -108,16 +107,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog_django',
-        'USER': 'root',
-        'PASSWORD': 'Iymy1800@',
-    }
-}
+#local_settings.pyの方に移行。
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'blog_django',
+#         'USER': 'root',
+#         'PASSWORD': 'Iymy1800@',
+#     }
+# }
 
 
 # Password validation
@@ -156,10 +156,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+#Herokuでのデプロイに必要なため追加。
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
 
 #別途作成したstaticフォルダ（css, java, img)に集約させるための表記
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+#Herokuでのデプロイに必要なため追加。
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #画像表示のpillow関連。投稿した写真が保存される場所を指定
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -171,3 +176,27 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 #ログイン時にDjangoでは自動的にprofileに飛ぶので、homeとしてあげる。
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
+
+#Heroku向けに追加。一番下に持ってこないとワークしない。。らしいが。
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+
+    #アマゾンS3を使ってデータ保存。
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    MEDIA_URL = S3_URL
+
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = None
+
+    #Herokuデプロイに必要なため追加。
+    import django_heroku
+    django_heroku.settings(locals())
