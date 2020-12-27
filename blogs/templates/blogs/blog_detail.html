@@ -9,8 +9,8 @@
         <div class="col-md-10">
             <div class="post-detail">
                 <ul>
-                    <li style="padding-bottom:15px;font-size:14px;color:white;text-align:center;">
-                        {% for tag in blog.tag.all %}<a class="tag" style="margin-right:5px;">{{tag}}</a>{% endfor %}
+                    <li style="padding-bottom:15px;font-size:14px;text-align:center;">
+                        {% for tag in blog.tag.all %}<a class="tag white" style="margin-right:5px;">{{tag}}</a>{% endfor %}
                     </li>
                     <li style="text-align:center;">
                         <h2><p>{{object.title}}</p></h2>
