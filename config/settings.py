@@ -184,19 +184,15 @@ except ImportError:
     pass
 
 if not DEBUG:
-    #SECRET_KEY = os.environ['SECRET_KEY']
-    SECRET_KEY = 'yx2szqin)a0jo72t=y&e_sf9vyfh%*asz^#gnx5rh0(2$gebzk'
+    SECRET_KEY = os.environ['SECRET_KEY']
 
     #アマゾンS3を使ってデータ保存。
-    # AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    # AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    # AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-
-    AWS_ACCESS_KEY_ID = 'AWS_ACCESS_KEY_ID'
-    AWS_SECRET_ACCESS_KEY = 'AWS_SECRET_ACCESS_KEY'
-    AWS_STORAGE_BUCKET_NAME = 'AWS_STORAGE_BUCKET_NAME'
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     MEDIA_URL = S3_URL
 
