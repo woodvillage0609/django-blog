@@ -189,11 +189,11 @@ if not DEBUG:
     #アマゾンS3を使ってデータ保存。
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    # AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    S3_BUCKET = os.environ['S3_BUCKET']
 
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    S3_URL = 'http://%s.s3.amazonaws.com/' % S3_BUCKET
     MEDIA_URL = S3_URL
 
     AWS_S3_FILE_OVERWRITE = False
