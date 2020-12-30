@@ -67,14 +67,14 @@ GOOGLE_MAPS_API_KEY = 'AIzaSyBTc38KnsEtHKwTSOB28FsLEdi156ogLmk'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    #以下、Herokuのため追加。ここに追加するらしい。
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #Herokuのため追加
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
