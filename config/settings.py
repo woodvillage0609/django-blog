@@ -63,8 +63,6 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-GOOGLE_MAPS_API_KEY = 'AIzaSyBTc38KnsEtHKwTSOB28FsLEdi156ogLmk'
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     #以下、Herokuのため追加。ここに追加するらしい。
@@ -166,10 +164,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 #Herokuでのデプロイに必要なため追加。
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-#画像表示のpillow関連。投稿した写真が保存される場所を指定
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
 #Crispy_formをインストールした際に行った設定
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -177,9 +171,18 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
-AWS_ACCESS_KEY_ID = 'AKIAR64PX34I7ZDUFIWW'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'django-synctown'
+#環境変数を表示させないようにするためのアプリを導入。
+import environ
+env = environ.Env()
+env.read_env('.env')
+
+SECRET_KEY = env('SECRET_KEY')
+
+GOOGLE_MAPS_API_KEY = env('GOOGLE_MAPS_API_KEY')
+
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
 
@@ -196,8 +199,6 @@ except ImportError:
     pass
 
 if not DEBUG:
-    SECRET_KEY = os.environ['SECRET_KEY']
-
     #アマゾンS3を使ってデータ保存。
     # AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     # AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
