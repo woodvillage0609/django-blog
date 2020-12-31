@@ -183,8 +183,11 @@ except ImportError:
     pass
 
 if not DEBUG:
-    SECRET_KEY = os.environ['SECRET_KEY']
+    #Herokuデプロイに必要なため追加。一番下に持ってこないとワークしない。。らしいが。
+    import django_heroku
+    django_heroku.settings(locals())
 
+    SECRET_KEY = os.environ['SECRET_KEY']
     #アマゾンS3を使ってデータ保存。
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
@@ -198,10 +201,6 @@ if not DEBUG:
 
     AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = None
-    
-    #Herokuデプロイに必要なため追加。一番下に持ってこないとワークしない。。らしいが。
-    import django_heroku
-    django_heroku.settings(locals())
 
 import dj_database_url
 db_from_env = dj_database_url.config()
