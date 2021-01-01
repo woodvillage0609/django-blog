@@ -172,13 +172,13 @@ LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
 #環境変数を表示させないようにするためのアプリを導入。
-import environ
-env = environ.Env()
-env.read_env('.env')
+# import environ
+# env = environ.Env()
+# env.read_env('.env')
 
 # SECRET_KEY = env('SECRET_KEY')
 
-GOOGLE_MAPS_API_KEY = env('GOOGLE_MAPS_API_KEY')
+# GOOGLE_MAPS_API_KEY = env('GOOGLE_MAPS_API_KEY')
 
 # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
 # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
@@ -198,12 +198,17 @@ try:
 except ImportError:
     pass
 
-if not DEBUG:
-    #アマゾンS3を使ってデータ保存。
-    SECRET_KEY = os.environ['SECRET_KEY']
-    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    import environ
+    env = environ.Env()
+    env.read_env('.env')
+
+    SECRET_KEY = env('SECRET_KEY')
+
+    GOOGLE_MAPS_API_KEY = env('GOOGLE_MAPS_API_KEY')
+
+    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_CUSTOM_DOMAIN = '%s.s3-ap-northeast-1.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
 
@@ -212,7 +217,23 @@ if not DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     AWS_S3_FILE_OVERWRITE = False
-    AWS_DEFAULT_ACL = None
+    AWS_DEFAULT_ACL = 'public-read'
+
+if not DEBUG:
+    #アマゾンS3を使ってデータ保存。
+    SECRET_KEY = os.environ['SECRET_KEY']
+    # AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    # AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    # AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    # AWS_S3_CUSTOM_DOMAIN = '%s.s3-ap-northeast-1.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    # AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
+
+    # AWS_LOCATION = 'media'
+    # MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+    # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+    # AWS_S3_FILE_OVERWRITE = False
+    # AWS_DEFAULT_ACL = None
     
     #Herokuデプロイに必要なため追加。一番下に持ってこないとワークしない。。らしいが。
     import django_heroku
