@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['django-synctown.herokuapp.com','127.0.0.1']
@@ -220,7 +220,7 @@ if not DEBUG:
     
     #Herokuデプロイに必要なため追加。一番下に持ってこないとワークしない。。らしいが。
     import django_heroku
-    django_heroku.settings(locals())
+    django_heroku.settings(locals(),staticfiles=False)
 
 # import dj_database_url
 # db_from_env = dj_database_url.config()
