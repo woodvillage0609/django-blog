@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['django-synctown.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -193,6 +193,10 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = 'public-read'
 
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES = {'default': dj_database_url.config()}
+
 try:
     from .local_settings import *
 except ImportError:
@@ -218,7 +222,7 @@ if not DEBUG:
     import django_heroku
     django_heroku.settings(locals())
 
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES = {'default': dj_database_url.config()}
+# import dj_database_url
+# db_from_env = dj_database_url.config()
+# DATABASES = {'default': dj_database_url.config()}
 #DATABASES['default'].update(db_from_env)
