@@ -178,6 +178,8 @@ LOGIN_URL = 'login'
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
+ADMINS = (('woodvillage0609', 'woodvillage0609@gmail.com'),)
+
 GOOGLE_MAPS_API_KEY = os.environ['GOOGLE_MAPS_API_KEY']
 
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
@@ -220,7 +222,7 @@ if not DEBUG:
     
     #Herokuデプロイに必要なため追加。一番下に持ってこないとワークしない。。らしいが。
     import django_heroku
-    django_heroku.settings(locals(),staticfiles=False)
+    django_heroku.settings(locals())
 
 # import dj_database_url
 # db_from_env = dj_database_url.config()
