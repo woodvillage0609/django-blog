@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
@@ -177,8 +177,6 @@ LOGIN_URL = 'login'
 # env.read_env('.env')
 
 SECRET_KEY = os.environ['SECRET_KEY']
-
-ADMINS = (('woodvillage0609', 'woodvillage0609@gmail.com'),)
 
 GOOGLE_MAPS_API_KEY = os.environ['GOOGLE_MAPS_API_KEY']
 
