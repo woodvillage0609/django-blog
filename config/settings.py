@@ -182,7 +182,7 @@ GOOGLE_MAPS_API_KEY = os.environ['GOOGLE_MAPS_API_KEY']
 
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+AWS_STORAGE_BUCKET_NAME = 'django-synctown'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3-ap-northeast-1.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
 
@@ -193,6 +193,10 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = 'public-read'
 
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES = {'default': dj_database_url.config()}
+
 try:
     from .local_settings import *
 except ImportError:
@@ -200,7 +204,7 @@ except ImportError:
 
 if not DEBUG:
     #アマゾンS3を使ってデータ保存。
-    SECRET_KEY = os.environ['SECRET_KEY']
+    # SECRET_KEY = os.environ['SECRET_KEY']
     # AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     # AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     # AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
@@ -212,12 +216,13 @@ if not DEBUG:
     # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     # AWS_S3_FILE_OVERWRITE = False
-    # AWS_DEFAULT_ACL = None
+    # AWS_DEFAULT_ACL = 'public-read'
     
     #Herokuデプロイに必要なため追加。一番下に持ってこないとワークしない。。らしいが。
     import django_heroku
     django_heroku.settings(locals())
 
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+# import dj_database_url
+# db_from_env = dj_database_url.config()
+# DATABASES = {'default': dj_database_url.config()}
+#DATABASES['default'].update(db_from_env)
