@@ -298,8 +298,8 @@
                     <img class="d-block w-100 side-slide" src="{{MEDIA_URL}}{{blog.photo}}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block" style="position:absolute;top:35%;">
                         <ul>
-                            <li style="padding-bottom:15px;color:white;font-size:14px;">
-                                {% for tag in blog.tag.all %}<a class="tag" style="margin-right:5px;">{{tag}}</a>{% endfor %}
+                            <li style="padding-bottom:15px;font-size:14px;">
+                                {% for tag in blog.tag.all %}<a class="tag white" style="margin-right:5px;">{{tag}}</a>{% endfor %}
                             </li>
                             <li>
                                 <h5><a href="{% url 'blog-detail' blog.id %}" class="white"><strong>{{blog.title}}</strong></a></h5>
@@ -314,8 +314,8 @@
                     <img class="d-block w-100 side-slide" src="{{MEDIA_URL}}{{blog.photo}}" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block" style="position:absolute;top:35%;">
                         <ul>
-                            <li style="padding-bottom:15px;color:white;font-size:14px;">
-                                {% for tag in blog.tag.all %}<a class="tag" style="margin-right:5px;">{{tag}}</a>{% endfor %}
+                            <li style="padding-bottom:15px;color:font-size:14px;">
+                                {% for tag in blog.tag.all %}<a class="tag white" style="margin-right:5px;">{{tag}}</a>{% endfor %}
                             </li>  
                             <li>
                                 <h5><a href="{% url 'blog-detail' blog.id %}" class="white"><strong>{{blog.title}}</strong></a></h5>
