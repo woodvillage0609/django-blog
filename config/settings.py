@@ -218,7 +218,7 @@ if not DEBUG:
     MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
     AWS_S3_FILE_OVERWRITE = False
-    AWS_DEFAULT_ACL = None
+    AWS_DEFAULT_ACL = 'public-read'
     
     #Herokuデプロイに必要なため追加。一番下に持ってこないとワークしない。。らしいが。
     import django_heroku
