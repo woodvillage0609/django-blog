@@ -18,7 +18,7 @@
                 <div class="carousel-item active home-slideshow">
                     <img class="d-block w-100" src="{{MEDIA_URL}}{{blog.photo}}" alt="First slide">
                     <div class="carousel-caption d-md-block">
-                        <h2><a href="{% url 'blog-detail' blog.id %}" class="white">{{blog.title}}</a></h2>
+                      <h3><a href="{% url 'blog-detail' blog.id %}" class="white">{{blog.title}}</a></h3>
                     </div>
                 </div>
             {% endfor %}
@@ -27,7 +27,7 @@
                 <div class="carousel-item home-slideshow">
                     <img class="d-block w-100" src="{{MEDIA_URL}}{{blog.photo}}" alt="Second slide">
                     <div class="carousel-caption d-md-block">
-                        <h2><a href="{% url 'blog-detail' blog.id %}" class="white">{{blog.title}}</a></h2>
+                        <h3><a href="{% url 'blog-detail' blog.id %}" class="white">{{blog.title}}</a></h3>
                     </div>
                 </div>
               {% endfor %}
@@ -296,7 +296,7 @@
             {% for blog in blog_random|slice:":1" %}
                 <div class="carousel-item active" style="position:relative;" >
                     <img class="d-block w-100 side-slide" src="{{MEDIA_URL}}{{blog.photo}}" alt="First slide">
-                    <div class="carousel-caption d-none d-md-block" style="position:absolute;top:35%;">
+                    <div class="carousel-caption d-md-block" style="position:absolute;top:35%;">
                         <ul>
                             <li style="padding-bottom:15px;font-size:14px;">
                                 {% for tag in blog.tag.all %}<a class="tag white" style="margin-right:5px;">{{tag}}</a>{% endfor %}
@@ -312,7 +312,7 @@
             {% for blog in blog_random|slice:"1:4" %}
                 <div class="carousel-item" style="position:relative;">
                     <img class="d-block w-100 side-slide" src="{{MEDIA_URL}}{{blog.photo}}" alt="Second slide">
-                    <div class="carousel-caption d-none d-md-block" style="position:absolute;top:35%;">
+                    <div class="carousel-caption d-md-block" style="position:absolute;top:35%;">
                         <ul>
                             <li style="padding-bottom:15px;color:font-size:14px;">
                                 {% for tag in blog.tag.all %}<a class="tag white" style="margin-right:5px;">{{tag}}</a>{% endfor %}
