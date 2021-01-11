@@ -392,6 +392,11 @@ table.overview td {
 /* ブレイクポイントをmax-width: 670pxに指定 */
 @media(max-width:670px){
 
+/* Base.html Carousel */
+.header h1 {
+	font-size:25px;
+}
+
 
 /* Home.html Carousel */
 .home-slideshow {
