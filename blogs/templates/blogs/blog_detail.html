@@ -26,7 +26,7 @@
                     </li>
 
                     {% if user.is_superuser %}
-                    <li style="padding:20px 50px 20px 50px;">
+                    <li class="detail-content-edit-delete">
                         <table style="width:100%;">
                             <td><a href="{% url 'blog-home' %}">Back</a></td>
                             <td style="text-align:right;"><a href="{% url 'blog-update' blog.id %}">Edit</a> |

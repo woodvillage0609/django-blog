@@ -53,7 +53,7 @@
             <ul>
                 <li>
                     <a href="{% url 'blog-detail' blog.id %}">
-                        <img src="{{MEDIA_URL}}{{blog.photo}}" style="width:100%;height:219px;object-fit:cover;">
+                        <img src="{{MEDIA_URL}}{{blog.photo}}">
                     </a>
                 </li>
                 <li>
@@ -218,7 +218,7 @@
                 <div class="fourth-each-list">
                     <div class="fourth-each-list-sub">
                         <a href="{% url 'citymap-detail' blog.id %}">
-                            <img src="{{MEDIA_URL}}{{blog.photo}}" style="width:100%;height:55%;object-fit:cover;">
+                            <img src="{{MEDIA_URL}}{{blog.photo}}" style="width:100%;height:60%;object-fit:cover;">
                         </a>
 
                         <ul>
@@ -234,7 +234,7 @@
                                 <a>{{blog.date|date:"Y/n/j"}}</a>
                             </li>
                             <li>
-                                <a>{{blog.content|safe|truncatechars:150}}</a>
+                                <a>{{blog.content|safe|truncatechars:120}}</a>
                             </li>
                         </ul>
 
