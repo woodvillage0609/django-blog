@@ -18,9 +18,6 @@ from django.urls import path, include
 #追加したもの
 from django.conf import settings
 from django.conf.urls.static import static
-# 試しに追加
-from django.views.static import serve
-from django.urls import re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,14 +26,11 @@ urlpatterns = [
     path('', include('blogs.urls')),
     path('', include('citymaps.urls')),
     path('', include('account.urls')),
-    # re_path(r'^media/(?P<path>.*)$', serve, {
-    #         'document_root': settings.MEDIA_ROOT,
-    #     }),
     
 ] 
 
 #MEDIA_ROOTに保存した画像を表示させるために必要なもの
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    #urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     
