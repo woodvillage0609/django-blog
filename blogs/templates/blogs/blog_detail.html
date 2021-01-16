@@ -43,7 +43,7 @@
             </div>
 
             <div class="post-detail-random">
-            {% for post in blog_list|slice:":3" %}
+            {% for post in object.relation.all|slice:":3" %}
                 <div class="detail-each-list">
                     <div class="detail-each-list-sub">
                         <a href="{% url 'blog-detail' post.id %}">
