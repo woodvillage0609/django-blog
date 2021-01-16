@@ -182,18 +182,6 @@ LOGIN_URL = 'login'
 
 GOOGLE_MAPS_API_KEY = os.environ['GOOGLE_MAPS_API_KEY']
 
-# AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-# AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-# AWS_STORAGE_BUCKET_NAME = 'django-synctown'
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3-ap-northeast-1.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-# AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
-
-# AWS_LOCATION = 'media'
-# MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = 'public-read'
 
 import dj_database_url
 db_from_env = dj_database_url.config()
@@ -218,7 +206,7 @@ if not DEBUG:
     MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
     AWS_S3_FILE_OVERWRITE = False
-    AWS_DEFAULT_ACL = None
+    AWS_DEFAULT_ACL = 'public-read'
     
     #Herokuデプロイに必要なため追加。一番下に持ってこないとワークしない。。らしいが。
     import django_heroku
