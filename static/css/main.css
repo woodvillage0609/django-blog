@@ -316,7 +316,12 @@ ul{
 
 /* Blog-Category.html */
 
-  .card-columns {
+.map-size {
+	width: 100%; 
+	height: 600px;
+}
+
+.card-columns {
 	  column-count: 4;
 	  padding-top:20px;
 	}
@@ -579,6 +584,10 @@ table.overview td {
 	}
 
 	/* Blog-Category.html */
+	.map-size {
+		width: 100%; 
+		height: 400px;
+	}
 	.card-columns {
 		column-count: 1;
 		padding-top:20px;
