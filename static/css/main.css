@@ -46,7 +46,7 @@ ul{
 }
 
 .header {
-	background-image:url('/static/img/white.jpg');
+	background-image:url('/static/img/london_background.jpg');
 	background-size:cover;
 	width:100%;
 	height:300px;
@@ -301,6 +301,12 @@ ul{
 .detail-each-list-sub li{
 	padding:10px 0px 0px 10px;
 	font-size:13px;
+}
+
+.detail-each-list-sub img {
+	width:100%;
+	height:50%;
+	object-fit:cover;
 }
 
 .detail-content-title {
@@ -558,8 +564,14 @@ table.overview td {
 	}
 
 	.detail-each-list-sub {
-		height:400px;
+		height:380px;
 		border:0px solid #C0C0C0;
+	}
+
+	.detail-each-list-sub img {
+		width:100%;
+		height:70%;
+		object-fit:cover;
 	}
 
 	.post-detail h2 {
