@@ -165,6 +165,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 #Herokuでのデプロイに必要なため追加。
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+#画像表示のpillow関連。投稿した写真が保存される場所を指定
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
