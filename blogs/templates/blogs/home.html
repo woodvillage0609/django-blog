@@ -56,8 +56,8 @@
                         <img src="{{MEDIA_URL}}{{blog.photo}}">
                     </a>
                 </li>
-                <li>
-                    <a href="{% url 'blog-detail' blog.id %}" class="under-home-slide-slideshow white">{{blog.title}}</a>
+                <li class="under-home-slide-slideshow ">
+                    <a href="{% url 'blog-detail' blog.id %}" class="white">{{blog.title}}</a>
                 </li>
             </ul>
         </div>

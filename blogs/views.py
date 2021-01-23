@@ -10,8 +10,10 @@ from .models import Blog, Category, Tag
 from citymaps.models import City
 from account.models import Account
 from .forms import BlogForm
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 #ログインしていないと、create/update/deleteできない様にする
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+#メッセージは一応ここでインポートしておく（delete時向け？）
+from django.contrib import messages
 # Create your views here.
 
 class BlogListView(ListView):
@@ -86,7 +88,7 @@ class BlogUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return False
 
 
-class BlogDeleteView(LoginRequiredMixin, DeleteView):
+class BlogDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Blog
     template_name = 'blogs/blog_confirm_delete.html'
     form_class = BlogForm
