@@ -20,6 +20,7 @@ class Tag(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=200)
+    subtitle = models.TextField(blank=True, null=True)
     content = RichTextUploadingField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(default=timezone.now)

@@ -20,6 +20,7 @@ class Tag(models.Model):
 
 class City(models.Model):
     title = models.CharField(verbose_name='建物名', max_length=100)
+    subtitle = models.TextField(blank=True, null=True)
     content = RichTextUploadingField()
     owner = models.CharField(verbose_name='事業主', max_length=100)
     completion = models.ForeignKey(

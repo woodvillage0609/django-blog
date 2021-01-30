@@ -101,6 +101,13 @@
                 
                 <table style="position:relative; width:100%;">
                     <tr>
+                        <td style="padding:0px 0px 20px 0px;text-align:center;">
+                        {%for profile in blog_profile %}
+                          <img src="{{MEDIA_URL}}{{profile.photo}}" style="height:60px;border-radius:50%;">   
+                        {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
                         <td style="padding:0px 0px 30px 10px;">
                             {{object.content|safe}}    
                         </td>

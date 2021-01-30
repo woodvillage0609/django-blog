@@ -57,10 +57,10 @@
                                 </span>
                             </li>
                             <li>
-                                {{post.date}}
+                                {{post.date|date:"Y/n/j"}}
                             </li>
-                            <li>
-                                {{post.content|safe|truncatechars:100}}
+                            <li class="grey" style="font-size:18px;">
+                                {{post.subtitle|safe|truncatechars:80}}
                             </li>
                         </ul>
 

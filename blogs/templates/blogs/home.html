@@ -88,8 +88,8 @@
                     <li>
                         <h4><a href="{% url 'blog-detail' blog.id %}">{{blog.title}}</a></h4>
                     </li>
-                    <li class="grey" style="font-size:14px;">
-                        <a>{{blog.content|safe|truncatechars:200}}</a>
+                    <li class="grey">
+                        <a>{{blog.subtitle|safe|truncatechars:200}}</a>
                     </li>
                 </ul>
                 {% endfor %}
@@ -129,7 +129,7 @@
             <div class="second-each-list">
                 <div class="second-each-list-sub">
                     <a href="{% url 'blog-detail' blog.id %}">
-                        <img src="{{MEDIA_URL}}{{blog.photo}}" style="width:100%;height:45%;object-fit:cover;">
+                        <img src="{{MEDIA_URL}}{{blog.photo}}">
                     </a>
 
                     <ul>
@@ -144,8 +144,8 @@
                         <li>
                             <a>{{blog.date|date:"Y/n/j"}}</a>
                         </li>
-                        <li class="grey">
-                            <a>{{blog.content|safe|truncatechars:98}}</a>
+                        <li class="grey" style="font-size:16px;">
+                            <a>{{blog.subtitle|safe|truncatechars:80}}</a>
                         </li>
                     </ul>
 
@@ -181,8 +181,8 @@
                             <li class="grey" style="font-size:14px;">
                                 <p>{{blog.date|date:"Y/n/j"}}</p>
                             </li>
-                            <li class="grey" style="font-size:14px;">
-                                <a>{{blog.content|safe|truncatechars:150}}</a>
+                            <li class="grey">
+                                <a>{{blog.subtitle|safe|truncatechars:150}}</a>
                             </li>
                         </ul>
                     </td>   
@@ -218,7 +218,7 @@
                 <div class="fourth-each-list">
                     <div class="fourth-each-list-sub">
                         <a href="{% url 'citymap-detail' blog.id %}">
-                            <img src="{{MEDIA_URL}}{{blog.photo}}" style="width:100%;height:60%;object-fit:cover;">
+                            <img src="{{MEDIA_URL}}{{blog.photo}}">
                         </a>
 
                         <ul>
@@ -233,8 +233,8 @@
                             <li>
                                 <a>{{blog.date|date:"Y/n/j"}}</a>
                             </li>
-                            <li>
-                                <a>{{blog.content|safe|truncatechars:120}}</a>
+                            <li class="grey" style="font-size:16px;">
+                                <a>{{blog.subtitle|safe|truncatechars:120}}</a>
                             </li>
                         </ul>
 

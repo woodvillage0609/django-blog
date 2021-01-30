@@ -27,7 +27,6 @@ a:hover {
 }
 
 
-
 /* Base.html */
 
 body {
@@ -69,9 +68,8 @@ ul{
 .under-header {
     position:absolute;
     width:100%;
-	color:black;
 	text-align:center;
-	padding-top:110px;
+	padding-top:120px;
 	z-index:2;
 }
 
@@ -170,9 +168,15 @@ ul{
 .second-each-list-sub {
     border:0px solid #C0C0C0;
     position:relative;
-    height:380px;
+    height:450px;
     background-color:white;
 
+}
+
+.second-each-list-sub img {
+	width:100%;
+	height:45%;
+	object-fit:cover;
 }
 
 .second-each-list-sub li{
@@ -236,6 +240,12 @@ ul{
 	font-size:13px;
 }
 
+.fourth-each-list-sub img {
+	width:100%;
+	height:60%;
+	object-fit:cover;
+}
+
 /* Home.html */
 /* side-topic */
 
@@ -274,12 +284,13 @@ ul{
 
 .post-detail-random {
 	width:100%;
-	border-top:solid 1px rgb(235, 233, 233);; 
+	border-top:solid 1px rgb(235, 233, 233);
 }
 
 .detail-content {
 	padding:40px 50px 10px 50px;
 }
+
 
 .detail-content-edit-delete {
 	padding:20px 50px 20px 50px;
@@ -309,7 +320,7 @@ ul{
 }
 
 .detail-content-title {
-	font-size:16px;
+	font-size:20px;
 	font-weight:bold;
 }
 
@@ -498,6 +509,35 @@ table.overview td {
 		font-size:25px;
 	}
 
+	.header {
+		background-image:url('/static/img/london_background.jpg');
+		background-size:cover;
+		width:100%;
+		height:180px;
+		position:relative;
+		background-position:center;
+	}
+	
+	.header::before {
+		z-index:1;
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color:rgb(243, 237, 237,0.2);
+	}
+	
+	.under-header {
+		position:absolute;
+		width:100%;
+		text-align:center;
+		padding-top:55px;
+		z-index:2;
+	}
+
 
 	/* Home.html Carousel */
 	.home-slideshow {
@@ -514,6 +554,12 @@ table.overview td {
 		padding-top:10px;
 	}
 
+	.home-side-slideshow img {
+		width:100%;
+		height:220px;
+		object-fit:cover;
+	}
+
 	.under-home-slide-slideshow {
 		position:absolute;
 		width:100%;
@@ -524,6 +570,8 @@ table.overview td {
 		vertical-align:middle;
 		font-size:15px;
 	}
+
+	
 
 	/* Home.html First Contetnt */
 	.first-content {
@@ -549,17 +597,31 @@ table.overview td {
 	.second-each-list-sub {
 		border:0px solid #C0C0C0;
 		position:relative;
-		height:300px;
+		height:450px;
 		background-color:white;
 
+	}
+
+	.second-each-list-sub img {
+		width:100%;
+		height:50%;
+		object-fit:cover;
 	}
 
 	/* Home.html Fourth Contetnt */
 	.fourth-each-list {
 		float:left;
 		width:100%;
+		height:450px;
 		padding:20px 0px 10px 0px; 
 		margin-bottom:30px;
+	}
+
+	
+	.fourth-each-list-sub img {
+		width:100%;
+		height:50%;
+		object-fit:cover;
 	}
 
 	/* Detail.html */
@@ -579,13 +641,13 @@ table.overview td {
 	}
 
 	.detail-each-list-sub {
-		height:380px;
+		height:450px;
 		border:0px solid #C0C0C0;
 	}
 
 	.detail-each-list-sub img {
 		width:100%;
-		height:70%;
+		height:55%;
 		object-fit:cover;
 	}
 
