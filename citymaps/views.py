@@ -8,6 +8,7 @@ from django.views.generic import (
 )
 from .models import City, Completion, Tag
 from .forms import CityForm
+from account.models import Account
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
@@ -24,7 +25,10 @@ class CityDetailView(DetailView):
     #Detail Viewのところで、関連記事を表示したい時のコード
     def get_context_data(self, **kwargs):
         context = super(CityDetailView, self).get_context_data(**kwargs)
-        context['citymap_list'] = City.objects.all().order_by('?')
+        context.update({
+            'citymap_list': City.objects.all().order_by('?'),
+            'blog_profile':Account.objects.filter(pk=1),
+        })
         return context
 
 

@@ -71,8 +71,8 @@
       
       <div class="card-block">
         <a href="{% url 'citymap-detail' citymap.id %}" class="card-title"><h5>{{citymap.title}}</h5></a>
-        <p class="card-text"><a style="color:grey;font-size:13px;">{{citymap.content|safe|truncatechars:100}}</a></p>
-        <p class="card-text"><small class="text-muted">{{citymap.date}}</small></p>
+        <p class="card-text"><a style="color:grey;font-size:13px;">{{citymap.subtitle|safe|truncatechars:100}}</a></p>
+        <p class="card-text"><small class="text-muted">{{citymap.date|date:"Y/n/j"}}</small></p>
   
         {% if user.is_superuser %}
         <div class="map-edit">
