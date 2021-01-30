@@ -16,7 +16,7 @@
 
 <!-- Code Sinippet反映用の貼り付け -->
 <link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/styles/monokai-sublime.min.css">
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/styles/dark.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
@@ -45,26 +45,26 @@
                         <div class="collapse navbar-collapse" id="navbarCollapse">
                             <ul class="navbar-nav mr-auto ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="{% url 'blog-home' %}">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{% url 'blog-home' %}"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'blog-category' category='Travel' %}">Travel</a>
+                                <a class="nav-link" href="{% url 'blog-category' category='Travel' %}"><i class="fas fa-plane"></i> Travel</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'blog-category' category='Gourmet' %}">Gourmet</a>
+                                <a class="nav-link" href="{% url 'blog-category' category='Gourmet' %}"><i class="fas fa-utensils"></i> Gourmet</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'blog-category' category='Coding' %}">Coding</a>
+                                <a class="nav-link" href="{% url 'blog-category' category='Coding' %}"><i class="fas fa-code-branch"></i> Coding</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'citymap-index' %}">City Development</a>
+                                <a class="nav-link" href="{% url 'citymap-index' %}"><i class="far fa-building"></i> City Development</a>
                             </li>
                             {% if user.is_superuser %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'blog-create' %}">New Blog</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'citymap-create' %}">New Map</a>
+                                <a class="nav-link" href="{% url 'citymap-create' %}">New CityMap</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'profile-update' pk=1 %}">Profile Update</a>

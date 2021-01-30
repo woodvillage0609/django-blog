@@ -109,7 +109,7 @@
                                 {% for tag in blog.tag.all %}<a class="tag white" style="margin-right:5px;">{{tag}}</a>{% endfor %}
                             </li>
                             <p><a href="{% url 'blog-detail' blog.id %}"><strong>{{blog.title}}</strong></a></p>
-                            <a><small>{{blog.date|date:"Y/n/j"}}</small></a>
+                            <a><small>{{blog.date|date:"Y-m-j"}}</small></a>
                         </td>   
                     </tr>
                 </table>
@@ -142,7 +142,7 @@
                             </span>
                         </li>
                         <li>
-                            <a>{{blog.date|date:"Y/n/j"}}</a>
+                            <a>{{blog.date|date:"Y-m-j"}}</a>
                         </li>
                         <li class="grey" style="font-size:16px;">
                             <a>{{blog.subtitle|safe|truncatechars:80}}</a>
@@ -179,7 +179,7 @@
                                 <strong><p><a href="{% url 'blog-detail' blog.id %}" style="font-size:20px;">{{blog.title}}</a></p></strong>
                             </li>
                             <li class="grey" style="font-size:14px;">
-                                <p>{{blog.date|date:"Y/n/j"}}</p>
+                                <p>{{blog.date|date:"Y-m-j"}}</p>
                             </li>
                             <li class="grey">
                                 <a>{{blog.subtitle|safe|truncatechars:150}}</a>
@@ -231,7 +231,7 @@
                                 </span>
                             </li>
                             <li>
-                                <a>{{blog.date|date:"Y/n/j"}}</a>
+                                <a>{{blog.date|date:"Y-m-j"}}</a>
                             </li>
                             <li class="grey" style="font-size:16px;">
                                 <a>{{blog.subtitle|safe|truncatechars:120}}</a>
@@ -271,7 +271,7 @@
                                 <a href="{% url 'blog-detail' blog.id %}"><strong>{{blog.title}}</strong></a>
                             </li>
                             <li>
-                                <a style="font-size:14px;">{{blog.date|date:"Y/n/j"}}</a>
+                                <a style="font-size:14px;">{{blog.date|date:"Y-m-j"}}</a>
                             </li>
                         </ul>
                     </td>   
@@ -303,7 +303,10 @@
                             </li>
                             <li>
                                 <h5><a href="{% url 'blog-detail' blog.id %}" class="white"><strong>{{blog.title}}</strong></a></h5>
-                            </li>  
+                            </li> 
+                            <li>
+                                <a style="font-size:12px;">{{blog.date|date:"Y-m-j"}}</a>
+                            </li> 
                         </ul>
                     </div>
                 </div>
@@ -321,7 +324,7 @@
                                 <h5><a href="{% url 'blog-detail' blog.id %}" class="white"><strong>{{blog.title}}</strong></a></h5>
                             </li>
                             <li>
-                                <a style="font-size:12px;">{{blog.date|date:"Y/n/j"}}</a>
+                                <a style="font-size:12px;">{{blog.date|date:"Y-m-j"}}</a>
                             </li>
                         </ul>
                     </div>

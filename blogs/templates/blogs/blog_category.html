@@ -83,7 +83,7 @@
     <div class="card-block">
       <a href="{% url 'blog-detail' blog.id %}" class="card-title"><h5>{{blog.title}}</h5></a>
       <p class="card-text"><a style="color:grey;font-size:18px;">{{blog.subtitle|safe|truncatechars:80}}</a></p>
-      <p class="card-text"><small class="text-muted">{{blog.date|date:"Y/n/j"}}</small></p>
+      <p class="card-text"><small class="text-muted">{{blog.date|date:"Y-m-j"}}</small></p>
 
       {% if user.is_superuser %}
       <div class="map-edit">
