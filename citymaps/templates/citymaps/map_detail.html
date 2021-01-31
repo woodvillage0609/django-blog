@@ -134,7 +134,7 @@
 <!-- サイドスライド -->
     <div class="col-md-4">
         
-    {% for citymap in citymap_list %}
+    {% for citymap in citymap_list|slice:":3" %}
     
     <div class="sidemap-show">	
         <a href="{% url 'citymap-detail' citymap.id %}">
