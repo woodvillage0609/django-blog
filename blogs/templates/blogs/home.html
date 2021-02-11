@@ -70,7 +70,7 @@
     <div class="col-md-8 col-sm-12">
 <!-- コンテンツ① -->
         <div class="topic-box">
-            <h4>Travel</h4>
+            <a href="{% url 'blog-category' category='Travel' %}"><h4><i class="fas fa-plane"></i> Travel</h4></a>
         </div>
 
         <div class="first-content">
@@ -120,7 +120,7 @@
 
 <!-- コンテンツ② -->
         <div class="topic-box">
-            <h4>Gourmet</h4>
+            <a href="{% url 'blog-category' category='Gourmet' %}"><h4><i class="fas fa-utensils"></i> Gourmet</h4></a>
         </div>
 
         <div class="second-content">
@@ -158,7 +158,7 @@
 
 <!-- コンテンツ③ -->
         <div class="topic-box">
-            <h4>Coding</h4>
+            <a href="{% url 'blog-category' category='Coding' %}"><h4><i class="fas fa-code-branch"></i> Coding</h4></a>
         </div>
 
         <div class="third-content">
@@ -194,7 +194,7 @@
 
 <!-- コンテンツ④ -->
         <div class="topic-box">
-            <h4>City Development</h4>
+            <a href="{% url 'citymap-index' %}"><h4><i class="far fa-building"></i> City Development</h4>
         </div>
 
         <div class="fourth-content">

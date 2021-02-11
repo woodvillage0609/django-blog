@@ -99,16 +99,16 @@
                 
                 <br>
                 
-                <table style="position:relative; width:100%;">
-                    <tr>
-                        <td style="padding:0px 0px 20px 0px;text-align:center;">
+                <table style="width:100%;">
+                    <tr style="border-bottom:1px #EEEEEE solid; border-top:1px #EEEEEE solid;">
+                        <td style="padding:10px 0px 10px 0px;text-align:center;">
                         {%for profile in blog_profile %}
                           <img src="{{MEDIA_URL}}{{profile.photo}}" style="height:60px;border-radius:50%;">   
                         {% endfor %}
                         </td>
                     </tr>
                     <tr>
-                        <td style="padding:0px 0px 30px 10px;">
+                        <td style="padding:20px 0px 30px 0px;">
                             {{object.content|safe}}    
                         </td>
                     </tr>
