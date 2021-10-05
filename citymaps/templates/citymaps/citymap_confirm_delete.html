@@ -1,7 +1,26 @@
-<h2>削除してもよろしいですか？</h2>
+{% extends 'blogs/base.html' %}
 
-<form method="POST" enctype="multipart/form-data" action=""  class="login-form">
-    {% csrf_token %}
-    <button type="submit" class="btn">削除</button>
-    
-    </form>
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-3 col-sm-0"></div>
+
+    <div class="col-md-6 col-sm-12" style="text-align:center;">
+
+        <h2>削除してもよろしいですか？</h2><br>
+
+        <form method="POST" enctype="multipart/form-data" action=""  class="login-form">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">削除</button>
+            
+        </form>
+
+    </div>
+
+    <div class="col-md-3 col-sm-0"></div>
+
+</div>
+
+
+{% endblock %}

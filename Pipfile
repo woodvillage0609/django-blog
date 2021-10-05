@@ -15,6 +15,7 @@ dj-database-url = "*"
 django-storages = "*"
 boto3 = "*"
 django-environ = "*"
+django-cleanup = "*"
 
 [dev-packages]
 

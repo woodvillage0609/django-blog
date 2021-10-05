@@ -13,10 +13,10 @@
                         {% for tag in blog.tag.all %}<a class="tag white" style="margin-right:5px;">{{tag}}</a>{% endfor %}
                     </li>
                     <li style="text-align:center;">
-                        <h2><p>{{object.title}}</p></h2>
+                        <h2><p><strong>{{object.title}}</strong></p></h2>
                     </li>
                     <li style="text-align:center;">
-                        <p>{{object.date|date:"Y/n/j"}}</p>
+                        <p>{{object.date|date:"Y-m-j"}}</p>
                     </li>
                     <li>
                         <img src="{{MEDIA_URL}}{{object.photo}}" style="width:100%;max-height:550px;;object-fit:cover;">
@@ -57,7 +57,7 @@
                                 </span>
                             </li>
                             <li>
-                                {{post.date|date:"Y/n/j"}}
+                                {{post.date|date:"Y-m-j"}}
                             </li>
                             <li class="grey" style="font-size:18px;">
                                 {{post.subtitle|safe|truncatechars:80}}
