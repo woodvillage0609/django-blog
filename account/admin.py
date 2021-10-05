@@ -5,7 +5,7 @@ from .models import Account
 
 # Register your models here.
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ('name', 'content', 'photo_image','id')
+    list_display = ('name', 'content', 'photo_image','id','author')
 
     def photo_image(self, obj):
         return mark_safe('<img src="{}" style="width:200px; height:auto;">'.format(obj.photo.url))

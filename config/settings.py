@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'storages',
+    'django_cleanup.apps.CleanupConfig'
 ]
 
 #CKeditorに投稿する写真とかのパス
@@ -183,6 +184,8 @@ LOGIN_URL = 'login'
 
 GOOGLE_MAPS_API_KEY = os.environ['GOOGLE_MAPS_API_KEY']
 
+# python manage.py runerver時に、長いWarningが出たので以下一文追加して解決。
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 import dj_database_url
 db_from_env = dj_database_url.config()
