@@ -22,7 +22,7 @@
 
         });
 
-        {% for blog in blog_list %}
+        {% for blog in object_list %}
 
         (function(){
 
@@ -75,7 +75,7 @@
 
 <div class="card-columns">
   
-  {% for blog in blog_list %}
+  {% for blog in object_list %}
 
   <div class="card">
       <a href="{% url 'blog-detail' blog.id %}"><img class="card-img-top img-fluid" src="{{MEDIA_URL}}{{ blog.photo }}" style="width:100%;" alt="Card image cap"></a>

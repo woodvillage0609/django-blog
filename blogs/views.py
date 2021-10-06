@@ -43,7 +43,7 @@ class BlogDetailView(DetailView):
     #Detail Viewのところで、関連記事を表示したい時のコード
     def get_context_data(self, **kwargs):
         context = super(BlogDetailView, self).get_context_data(**kwargs)
-        context['blog_list'] = Blog.objects.all().order_by('?')
+        # context['blog_list'] = Blog.objects.all().order_by('?')
         return context
     
 
@@ -120,7 +120,7 @@ class CategoryView(ListView):
 #タグ表示向け
 class TagView(ListView):
     model = Blog
-    template_name = 'blog/index.html'
+    template_name = 'blogs/blog_tag.html'
 
     def get_queryset(self):
         tag = Tag.objects.get(name=self.kwargs['tag'])
