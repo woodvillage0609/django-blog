@@ -11,24 +11,45 @@
               <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleFade" data-slide-to="1"></li>
               <li data-target="#carouselExampleFade" data-slide-to="2"></li>
+              <li data-target="#carouselExampleFade" data-slide-to="3"></li>
             </ol>
             <div class="carousel-inner">
             {% for blog in blogs|slice:":1" %}
-                <div class="carousel-item active home-slideshow">
-                    <img class="d-block w-100" src="{{MEDIA_URL}}{{blog.photo}}" alt="First slide">
-                    <div class="carousel-caption d-md-block">
-                      <h3><a href="{% url 'blog-detail' blog.id %}" class="white">{{blog.title}}</a></h3>
-                    </div>
+            <div class="carousel-item active home-slideshow" style="position:relative;" >
+                <img class="d-block w-100 side-slide" src="{{MEDIA_URL}}{{blog.photo}}" alt="First slide">
+                <div class="carousel-caption d-md-block" style="position:absolute;top:35%;">
+                    <ul>
+                        <li style="padding-bottom:15px;font-size:14px;">
+                            {% for tag in blog.tag.all %}<a class="tag white" style="margin-right:5px;">{{tag}}</a>{% endfor %}
+                        </li>
+                        <li>
+                            <h3><a href="{% url 'blog-detail' blog.id %}" class="white"><strong>{{blog.title}}</strong></a></h3>
+                        </li> 
+                        <li>
+                            <a style="font-size:14px;">{{blog.date|date:"Y-m-j"}}</a>
+                        </li> 
+                    </ul>
                 </div>
+            </div>
             {% endfor %}
         
-            {% for blog in blogs|slice:"1:3" %}
-                <div class="carousel-item home-slideshow">
-                    <img class="d-block w-100" src="{{MEDIA_URL}}{{blog.photo}}" alt="Second slide">
-                    <div class="carousel-caption d-md-block">
-                        <h3><a href="{% url 'blog-detail' blog.id %}" class="white">{{blog.title}}</a></h3>
-                    </div>
+            {% for blog in blogs|slice:"1:4" %}
+            <div class="carousel-item home-slideshow" style="position:relative;" >
+                <img class="d-block w-100 side-slide" src="{{MEDIA_URL}}{{blog.photo}}" alt="Second slide">
+                <div class="carousel-caption d-md-block" style="position:absolute;top:35%;">
+                    <ul>
+                        <li style="padding-bottom:15px;font-size:14px;">
+                            {% for tag in blog.tag.all %}<a class="tag white" style="margin-right:5px;">{{tag}}</a>{% endfor %}
+                        </li>
+                        <li>
+                            <h3><a href="{% url 'blog-detail' blog.id %}" class="white"><strong>{{blog.title}}</strong></a></h3>
+                        </li> 
+                        <li>
+                            <a style="font-size:14px;">{{blog.date|date:"Y-m-j"}}</a>
+                        </li> 
+                    </ul>
                 </div>
+            </div>
               {% endfor %}
         
             </div>
@@ -47,7 +68,7 @@
 
     <div class="col-md-4 col-sm-12">
 
-        {% for blog in blogs|slice:"3:5" %}
+        {% for blog in blogs|slice:"4:6" %}
         <div class="home-side-slideshow">
             <ul>
                 <li>

@@ -14,10 +14,10 @@
           
           {% if category_key == "Travel" %}
           center: {lat: 48.137393, lng: 11.575449},
-          zoom: 5,
-          {% else %}
-          center: {lat: 35.672553, lng: 139.7472087},
-          zoom: 14,
+          zoom: 4,
+          {% elif category_key == "Gourmet" %}
+          center: {lat: 35.681515, lng: 139.767146},
+          zoom: 13,
           {% endif %}
 
         });
@@ -102,12 +102,6 @@
   {% endfor %}
 
 </div>
-
-
-
-
-
-
 
 
 

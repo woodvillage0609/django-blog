@@ -556,10 +556,16 @@ table.overview td {
 		z-index:2;
 	}
 
+	.nav-border-line {
+		border-top:1px solid black;
+		border-bottom:1px solid black;
+		margin-bottom:20px;
+	}
+
 
 	/* Home.html Carousel */
 	.home-slideshow {
-		height:220px;
+		height:450px;
 		width:100%;
 	}
 
