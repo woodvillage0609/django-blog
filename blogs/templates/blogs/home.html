@@ -12,6 +12,7 @@
               <li data-target="#carouselExampleFade" data-slide-to="1"></li>
               <li data-target="#carouselExampleFade" data-slide-to="2"></li>
               <li data-target="#carouselExampleFade" data-slide-to="3"></li>
+              <li data-target="#carouselExampleFade" data-slide-to="4"></li>
             </ol>
             <div class="carousel-inner">
             {% for blog in blogs|slice:":1" %}
@@ -33,7 +34,7 @@
             </div>
             {% endfor %}
         
-            {% for blog in blogs|slice:"1:4" %}
+            {% for blog in blogs|slice:"1:5" %}
             <div class="carousel-item home-slideshow" style="position:relative;" >
                 <img class="d-block w-100 side-slide" src="{{MEDIA_URL}}{{blog.photo}}" alt="Second slide">
                 <div class="carousel-caption d-md-block" style="position:absolute;top:35%;">
@@ -68,7 +69,7 @@
 
     <div class="col-md-4 col-sm-12">
 
-        {% for blog in blogs|slice:"4:6" %}
+        {% for blog in blogs|slice:"5:7" %}
         <div class="home-side-slideshow">
             <ul>
                 <li>
@@ -391,7 +392,7 @@
             <ul>
             {% for category in blog_category_list %}
                 <li>
-                    <a href="{% url 'blog-category' category %}">{{category.name}}</a>
+                <a href="{% url 'blog-category' category %}" class="tag white">{{category.name}}</a>
                 </li>
                 
             {% endfor %}
