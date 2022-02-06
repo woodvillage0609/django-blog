@@ -34,7 +34,7 @@
             </div>
             {% endfor %}
         
-            {% for blog in blogs|slice:"2:6" %}
+            {% for blog in blogs|slice:"1:5" %}
             <div class="carousel-item home-slideshow" style="position:relative;" >
                 <img class="d-block w-100 side-slide" src="{{MEDIA_URL}}{{blog.photo}}" alt="Second slide">
                 <div class="carousel-caption d-md-block" style="position:absolute;top:35%;">
@@ -69,7 +69,7 @@
 
     <div class="col-md-4 col-sm-12">
 
-        {% for blog in blogs|slice:"6:8" %}
+        {% for blog in blogs|slice:"5:7" %}
         <div class="home-side-slideshow">
             <ul>
                 <li>
